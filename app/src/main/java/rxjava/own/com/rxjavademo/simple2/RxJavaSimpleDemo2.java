@@ -36,9 +36,13 @@ public class RxJavaSimpleDemo2 extends Activity implements View.OnClickListener 
                     @Override
                     public void call(Subscriber<? super Integer> observer) {
                         Log.e("test", "回调了");
+                        //所以我们在这个方法里可以干一些事情
+
+                        //进行通信（说白了就是通知观察者）
                         for (int i = 0; i < 5; i++) {
                             observer.onNext(i);
                         }
+                        //当数据完成传递完成
                         observer.onCompleted();
                     }
                 });
