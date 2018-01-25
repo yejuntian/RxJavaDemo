@@ -12,7 +12,8 @@
         <activity android:name=".simple2.RxJavaSimpleDemo2"/>
         <activity android:name=".simple3.RxJavaSimpleDemo3"/>
         <activity android:name=".simple4.RxJavaSimpleDemo4"/>
-        <activity android:name=".simple5.RxJavaSimpleDemo5">
+        <activity android:name=".simple5.RxJavaSimpleDemo5"/>
+        <activity android:name=".simple6.RxJavaSimpleDemo6">
             <!--<activity android:name=".MainActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
