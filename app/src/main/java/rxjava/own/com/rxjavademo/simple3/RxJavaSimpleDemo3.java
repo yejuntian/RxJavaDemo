@@ -26,7 +26,7 @@ public class RxJavaSimpleDemo3 extends Activity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple2);
-        Button = findViewById(R.id.button);
+        Button = findViewById(R.id.button1);
         Button.setOnClickListener(this);
 
         List<Integer> items = new ArrayList<Integer>();
@@ -42,7 +42,7 @@ public class RxJavaSimpleDemo3 extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
+            case R.id.button1:
                 observable.subscribe(new Observer<Integer>() {
                     @Override
                     public void onCompleted() {

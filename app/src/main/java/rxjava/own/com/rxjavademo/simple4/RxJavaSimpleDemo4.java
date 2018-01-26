@@ -26,7 +26,7 @@ public class RxJavaSimpleDemo4 extends Activity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple2);
-        Button = findViewById(R.id.button);
+        Button = findViewById(R.id.button1);
         Button.setOnClickListener(this);
 
         //传统的Java函数，转变为一个Observable；然后依次发送数据
@@ -39,7 +39,7 @@ public class RxJavaSimpleDemo4 extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
+            case R.id.button1:
                 observable.subscribe(new Observer<String>() {
                     @Override
                     public void onCompleted() {

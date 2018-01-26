@@ -25,7 +25,7 @@ public class RxJavaSimpleDemo2 extends Activity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple2);
-        Button = findViewById(R.id.button);
+        Button = findViewById(R.id.button1);
         Button.setOnClickListener(this);
         //创建一个被观察者
         //配置回调接口
@@ -52,7 +52,7 @@ public class RxJavaSimpleDemo2 extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
+            case R.id.button1:
                 Subscription subscriptionPrint = observableString.subscribe(new Observer<Integer>() {
                     @Override
                     public void onCompleted() {

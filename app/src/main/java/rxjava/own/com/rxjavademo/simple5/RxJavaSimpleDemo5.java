@@ -24,7 +24,7 @@ public class RxJavaSimpleDemo5 extends Activity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple2);
-        Button = findViewById(R.id.button);
+        Button = findViewById(R.id.button1);
         Button.setOnClickListener(this);
 
         publishSubject = PublishSubject.create();
@@ -50,7 +50,7 @@ public class RxJavaSimpleDemo5 extends Activity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button:
+            case R.id.button1:
                 //需要自己手动发送（冷更新）
                 publishSubject.onNext("123");
                 break;
