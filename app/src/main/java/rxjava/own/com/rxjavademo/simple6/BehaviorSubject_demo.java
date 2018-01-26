@@ -16,7 +16,7 @@ import rxjava.own.com.rxjavademo.R;
  * BehaviorSubject
  */
 
-public class RxJavaSimpleDemo6 extends Activity implements View.OnClickListener {
+public class BehaviorSubject_demo extends Activity implements View.OnClickListener {
     BehaviorSubject<String> behaviorSubject;
     private Button Button;
 

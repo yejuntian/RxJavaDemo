@@ -22,7 +22,7 @@ import rxjava.own.com.rxjavademo.R;
  *
  */
 
-public class RxJavaSimpleDemo8 extends Activity implements View.OnClickListener {
+public class AsyncSubject_demo extends Activity implements View.OnClickListener {
     AsyncSubject<String> asyncSubject;
     private Button Button1;
     private Button Button2;

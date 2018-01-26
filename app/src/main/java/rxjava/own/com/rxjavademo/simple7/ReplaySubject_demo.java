@@ -25,7 +25,7 @@ import rxjava.own.com.rxjavademo.R;
  * 通过ArrayList进行缓存数据
  */
 
-public class RxJavaSimpleDemo7 extends Activity implements View.OnClickListener {
+public class ReplaySubject_demo extends Activity implements View.OnClickListener {
     ReplaySubject<String> replaySubject;
     private Button Button1;
     private Button Button2;

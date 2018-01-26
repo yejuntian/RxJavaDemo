@@ -16,7 +16,7 @@ import rxjava.own.com.rxjavademo.R;
  * PublishSubject
  */
 
-public class RxJavaSimpleDemo5 extends Activity implements View.OnClickListener {
+public class PublishSubject_demo extends Activity implements View.OnClickListener {
     PublishSubject<String> publishSubject;
     private Button Button;
 
