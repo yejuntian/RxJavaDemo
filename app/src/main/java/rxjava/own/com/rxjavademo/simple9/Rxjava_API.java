@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Observable.OnSubscribe;
@@ -19,7 +20,7 @@ import rx.functions.Func0;
 import rxjava.own.com.rxjavademo.R;
 
 
-public class Rxjava_method extends Activity implements View.OnClickListener {
+public class Rxjava_API extends Activity implements View.OnClickListener {
     private Button Button1;
     private Button Button2;
     private EditText editText;
@@ -70,7 +71,9 @@ public class Rxjava_method extends Activity implements View.OnClickListener {
             case R.id.button2:
 //                repeat();
 //                defer();
-                range();
+//                range();
+//                interval();
+                timer();
                 break;
         }
     }
@@ -125,7 +128,33 @@ public class Rxjava_method extends Activity implements View.OnClickListener {
         });
     }
 
+    /**
+     * interval()无限轮询：
+     * 第一个参数：开始发送消息推迟的时间
+     * 第二个参数：两个消息之间发送的间隔时间（即：轮询时间）
+     * 第三个参数：时间单位（毫秒、秒、分钟....）；
+     */
+    public void interval() {
+        Observable<Long> observable = Observable.interval(2,3, TimeUnit.SECONDS);
+        observable.subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                Log.e("test", "interval = " + String.valueOf(aLong));
+            }
+        });
+    }
 
+    /**
+     *timer只允许执行一次
+     */
+    public void timer(){
+        Observable.timer(3,TimeUnit.SECONDS).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                Log.e("test", "timer = " + String.valueOf(aLong));
+            }
+        });
+    }
 
 
 }

@@ -16,7 +16,7 @@
         <activity android:name=".simple6.BehaviorSubject_demo"/>
         <activity android:name=".simple7.ReplaySubject_demo"/>
         <activity android:name=".simple8.AsyncSubject_demo"/>
-        <activity android:name=".simple9.Rxjava_method">
+        <activity android:name=".simple9.Rxjava_API">
             <!--<activity android:name=".MainActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
