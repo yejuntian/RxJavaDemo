@@ -95,6 +95,18 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
 
             }
         });
+
+        observable.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+
+            }
+        });
     }
 
     /**

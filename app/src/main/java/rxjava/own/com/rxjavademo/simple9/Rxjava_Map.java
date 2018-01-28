@@ -14,6 +14,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.functions.Func2;
 import rxjava.own.com.rxjavademo.R;
 
 
@@ -37,7 +38,7 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
             case R.id.button1:
 //                map();
 //                map1();
-                map2();
+//                flatMap();
                 break;
         }
 
@@ -102,8 +103,10 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
         });
     }
 
-
-    public void map2() {
+    /**
+     * 应用场景:解决接口嵌套问题（例如授权成功之后，登录场景）
+     */
+    public void flatMap() {
         List<Person> personList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             List<Order> orderList = new ArrayList<>();
@@ -128,6 +131,7 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
             }
         });
     }
+
 
 
 }
