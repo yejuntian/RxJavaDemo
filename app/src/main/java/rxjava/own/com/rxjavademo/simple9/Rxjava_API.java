@@ -17,6 +17,7 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func0;
+import rx.functions.Func1;
 import rxjava.own.com.rxjavademo.R;
 
 
@@ -70,6 +71,7 @@ public class Rxjava_API extends Activity implements View.OnClickListener {
                 break;
             case R.id.button2:
 //                repeat();
+                repeatWhen();
 //                defer();
 //                range();
 //                interval();
@@ -84,6 +86,20 @@ public class Rxjava_API extends Activity implements View.OnClickListener {
      */
     public void repeat() {
         Observable.just("hello word", 123).repeat(3).subscribe(new Action1<Serializable>() {
+            @Override
+            public void call(Serializable serializable) {
+                Log.e("test", String.valueOf(serializable));
+            }
+        });
+    }
+
+    public void repeatWhen(){
+        Observable.just("hello word", 123).repeatWhen(new Func1<Observable<? extends Void>, Observable<?>>() {
+            @Override
+            public Observable<?> call(Observable<? extends Void> observable) {
+                return observable.timer(6,TimeUnit.SECONDS);
+            }
+        }).subscribe(new Action1<Serializable>() {
             @Override
             public void call(Serializable serializable) {
                 Log.e("test", String.valueOf(serializable));
@@ -136,6 +152,13 @@ public class Rxjava_API extends Activity implements View.OnClickListener {
      */
     public void interval() {
         Observable<Long> observable = Observable.interval(2,3, TimeUnit.SECONDS);
+        /*终止轮询
+        observable.compose(new Observable.Transformer<Long, Long>() {
+            @Override
+            public Observable<Long> call(Observable<Long> longObservable) {
+                return longObservable.takeUntil(Observable.timer(1000, TimeUnit.SECONDS));
+            }
+        });*/
         observable.subscribe(new Action1<Long>() {
             @Override
             public void call(Long aLong) {

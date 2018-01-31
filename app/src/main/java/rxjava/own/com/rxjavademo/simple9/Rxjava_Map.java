@@ -39,6 +39,7 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
 //                map();
 //                map1();
 //                flatMap();
+                flatMapIterable();
                 break;
         }
 
@@ -123,6 +124,32 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
             @Override
             public Observable<Order> call(Person person) {
                 return Observable.from(person.getOrderList());
+            }
+        }).subscribe(new Action1<Order>() {
+            @Override
+            public void call(Order order) {
+                Log.e("test", order.getOrderId() + order.getGoodName());
+            }
+        });
+    }
+
+    public void flatMapIterable(){
+        List<Person> personList = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            List<Order> orderList = new ArrayList<>();
+            Person person = new Person("张三", 20);
+            for (int j = 0; j < 2; j++) {
+                Order order = new Order("张三" + i + " 订单号 :" + j, " 商品名称 :" + j);
+                orderList.add(order);
+            }
+            person.setOrderList(orderList);
+            personList.add(person);
+        }
+        
+        Observable.from(personList).flatMapIterable(new Func1<Person, Iterable<Order>>() {
+            @Override
+            public Iterable<Order> call(Person person) {
+                return person.getOrderList();
             }
         }).subscribe(new Action1<Order>() {
             @Override

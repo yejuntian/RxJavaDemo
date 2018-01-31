@@ -46,7 +46,7 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
 //                filter();
 //                take();
 //                takeLast();
-//                distinct1();
+                distinct1();
 //                distinct2();
 //                first();
 //                last();
