@@ -9,17 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import rx.schedulers.Schedulers;
 import rxjava.own.com.rxjavademo.R;
-import rxjava.own.com.rxjavademo.simple10.InterfaceNestingActivity;
-import rxjava.own.com.rxjavademo.simple10.NetworkConditionPollingActivity;
-import rxjava.own.com.rxjavademo.simple10.NetworkPollingActivity;
 
 
 public class Rxjava_net extends Activity {
 
     private ListView listView;
-    private Class[] clazz = new Class[]{NetworkPollingActivity.class,NetworkConditionPollingActivity.class, InterfaceNestingActivity.class, SchedulersActivity.class};
+    private Class[] clazz = new Class[]{NetworkPollingActivity.class,NetworkConditionPollingActivity.class, InterfaceNestingActivity.class, interfaceRetryActivity.class};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +23,7 @@ public class Rxjava_net extends Activity {
         setContentView(R.layout.activity_net);
         listView = findViewById(R.id.listview);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        adapter.addAll(new String[]{"（无条件）网络请求轮询", "（有条件）网络请求轮询", "网络请求嵌套回调", " 线程控制（切换 / 调度 )", "网络请求出错重连"});
+        adapter.addAll(new String[]{"（无条件）网络请求轮询", "（有条件）网络请求轮询", "网络请求嵌套回调", "接口重试"});
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
