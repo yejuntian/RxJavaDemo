@@ -15,16 +15,16 @@ import android.util.Log;
 //    }
 
 public class Translation {
-    private int status;
+    public int status;
 
     private content content;
 
     private static class content {
-        private String from;
-        private String to;
-        private String vendor;
-        private String out;
-        private int errNo;
+        public String from;
+        public String to;
+        public String vendor;
+        public String out;
+        public int errNo;
 
         @Override
         public String toString() {

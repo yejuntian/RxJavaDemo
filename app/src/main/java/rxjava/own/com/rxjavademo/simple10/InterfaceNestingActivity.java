@@ -21,7 +21,7 @@ import rxjava.own.com.rxjavademo.R;
 import rxjava.own.com.rxjavademo.service.Api;
 import rxjava.own.com.rxjavademo.service.entity.Translation;
 
-public class NetworkPollingActivity extends Activity {
+public class InterfaceNestingActivity extends Activity {
     private Api request;
 
     @Override
@@ -30,7 +30,7 @@ public class NetworkPollingActivity extends Activity {
         setContentView(R.layout.activity_network_polling);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://fy.iciba.com/ajax.php?a=fy&f=auto&t=auto&w=hi%20register") // 设置 网络请求 Url
+                .baseUrl("http://fy.iciba.com/") // 设置 网络请求 Url
                 .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava
                 .build();
@@ -40,20 +40,15 @@ public class NetworkPollingActivity extends Activity {
     }
 
     public void onClick(View view) {
-
-
-        Observable.interval(2, 1, TimeUnit.SECONDS)
-                .doOnNext(new Action1<Long>() {
+        request.getRegisterCall()
+                .flatMap(new Func1<Translation, Observable<Translation>>() {
                     @Override
-                    public void call(Long aLong) {
-                        Log.d("test", "第 " + aLong + " 次轮询" +" 当前线程 = "+Thread.currentThread().getName());
-
-                    }
-                })
-                .flatMap(new Func1<Long, Observable<Translation>>() {
-                    @Override
-                    public Observable<Translation> call(Long aLong) {
-                        return request.getCall();
+                    public Observable<Translation> call(Translation translation) {
+                        if (translation.status == 1) {
+                            return request.getLoginCall();
+                        } else {
+                            return Observable.error(new Exception("访问异常"));
+                        }
                     }
                 })
                 .compose(this.<Translation>schedulersTransformer())
@@ -65,16 +60,14 @@ public class NetworkPollingActivity extends Activity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("test", "onError e = " + e);
+                        Log.e("test", "e = " + e);
                     }
 
                     @Override
                     public void onNext(Translation translation) {
-                        Log.d("test", "translation = " + translation);
-
+                        Log.e("test", "translation = " + translation);
                     }
                 });
-
 
     }
 

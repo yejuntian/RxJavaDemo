@@ -54,7 +54,10 @@
             android:name="rxjava.own.com.rxjavademo.simple10.NetworkConditionPollingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".simple9.Rxjava_net"
+            android:name="rxjava.own.com.rxjavademo.simple10.InterfaceNestingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple10.Rxjava_net"
             android:screenOrientation="portrait">
             <!--<activity android:name=".MainActivity">-->
             <intent-filter>

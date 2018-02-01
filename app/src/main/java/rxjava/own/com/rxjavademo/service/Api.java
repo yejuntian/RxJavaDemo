@@ -8,4 +8,10 @@ public interface Api {
     @GET("ajax.php?a=fy&f=auto&t=auto&w=hi%20world")
     Observable<Translation> getCall();
 
+    @GET("ajax.php?a=fy&f=auto&t=auto&w=hi%20register")
+    Observable<Translation> getRegisterCall();
+
+    @GET("ajax.php?a=fy&f=auto&t=auto&w=hi%20login")
+    Observable<Translation> getLoginCall();
+
 }
