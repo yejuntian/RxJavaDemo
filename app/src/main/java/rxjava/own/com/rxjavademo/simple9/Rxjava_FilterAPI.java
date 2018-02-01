@@ -49,7 +49,9 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
                 distinct1();
 //                distinct2();
 //                first();
+//                first2();
 //                last();
+//                last2();
 //                skip();
 //                skipLast();
 //                elementAt();
@@ -210,27 +212,55 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     }
 
     /**
-     *只发送序列中的第一个数据项
+     * 只发送序列中的第一个数据项
      * 其实内部调用的take(1)方法
      */
-    public void first(){
-        Observable.from(new String[]{"hello","word"}).first().subscribe(new Action1<String>() {
+    public void first() {
+        Observable.from(new String[]{"hello", "word"}).first().subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
+            }
+        });
+    }
+
+    public void first2() {
+        Observable.from(new String[]{"hello", "word"}).first(new Func1<String, Boolean>() {
+            @Override
+            public Boolean call(String s) {
+                return !s.equals("hello");
+            }
+        }).subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                Log.e("test", "s = " + s);
             }
         });
     }
 
     /**
-     *只发送序列中的最后一个数据项
+     * 只发送序列中的最后一个数据项
      * 其实内部调用的takeLast方法
      */
-    public void last(){
-        Observable.from(new String[]{"hello","word"}).last().subscribe(new Action1<String>() {
+    public void last() {
+        Observable.from(new String[]{"hello", "word"}).last().subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
+            }
+        });
+    }
+
+    public void last2() {
+        Observable.from(new String[]{"hello", "word", "last"}).last(new Func1<String, Boolean>() {
+            @Override
+            public Boolean call(String s) {
+                return !s.equals("last");
+            }
+        }).subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                Log.e("test", "s = " + s);
             }
         });
     }
@@ -238,11 +268,11 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     /**
      * 从头开始，跳过多少个，然后再发送
      */
-    public void skip(){
-        Observable.from(new String[]{"hello","word","xiaohong"}).skip(1).subscribe(new Action1<String>() {
+    public void skip() {
+        Observable.from(new String[]{"hello", "word", "xiaohong"}).skip(1).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
             }
         });
     }
@@ -250,11 +280,11 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     /**
      * 最后面的几个不需要，然后再发送
      */
-    public void skipLast(){
-        Observable.from(new String[]{"hello","word","xiaohong"}).skipLast(1).subscribe(new Action1<String>() {
+    public void skipLast() {
+        Observable.from(new String[]{"hello", "word", "xiaohong"}).skipLast(1).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
             }
         });
     }
@@ -262,11 +292,11 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     /**
      * 发射的事件序列中的第n项数据,下标从0开始
      */
-    public void elementAt(){
-        Observable.from(new String[]{"hello","word","xiaohong"}).elementAt(1).subscribe(new Action1<String>() {
+    public void elementAt() {
+        Observable.from(new String[]{"hello", "word", "xiaohong"}).elementAt(1).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
             }
         });
     }
@@ -274,11 +304,11 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     /**
      * 发送执行的消息，如果不存在发送默认值
      */
-    public void elementAtOrDefault(){
-        Observable.from(new String[]{"hello","word","xiaohong"}).elementAtOrDefault(9,"平凡的世界").subscribe(new Action1<String>() {
+    public void elementAtOrDefault() {
+        Observable.from(new String[]{"hello", "word", "xiaohong"}).elementAtOrDefault(9, "平凡的世界").subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
             }
         });
     }
@@ -287,11 +317,11 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     /**
      * 指定时间范围内，发送最新的一条数据
      */
-    public void sample(){
-        Observable.from(new String[]{"hello","word","xiaohong"}).sample(9,TimeUnit.SECONDS).subscribe(new Action1<String>() {
+    public void sample() {
+        Observable.from(new String[]{"hello", "word", "xiaohong"}).sample(9, TimeUnit.SECONDS).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.e("test","s = "+s);
+                Log.e("test", "s = " + s);
             }
         });
     }

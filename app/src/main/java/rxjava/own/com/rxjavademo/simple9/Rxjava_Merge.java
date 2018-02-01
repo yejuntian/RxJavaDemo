@@ -45,10 +45,32 @@ public class Rxjava_Merge extends Activity implements View.OnClickListener {
 //                mergeDelayErrorOk();
 //                zip();
 //                join();
+                toListTest();
                 break;
         }
 
     }
+
+    /**
+     * 测试toList操作符
+     */
+    private void toListTest() {
+        String[] strs = new String[] {"jack", "ann", "one", "two", "three", "four"};
+        Observable.from(strs)
+                .toList()
+                .map(new Func1<List<String>, String>() {
+                    @Override
+                    public String call(List<String> strings) {
+                        return strings.get(0);
+                    }
+                }).subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String strings) {
+
+                    }
+                });
+    }
+
 
     /**
      * 多个输入一个输出
@@ -148,7 +170,6 @@ public class Rxjava_Merge extends Activity implements View.OnClickListener {
                 Log.e("test", "s = " + s);
             }
         });
-
     }
 
 

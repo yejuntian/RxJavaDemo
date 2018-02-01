@@ -75,20 +75,14 @@ public class Rxjava_Scheduler extends Activity implements View.OnClickListener {
      */
     public void rxJavaDownLoader() {
         Observable.just(downLoadUrl)
-                .subscribeOn(Schedulers.io())
                 .map(new Func1<String, Bitmap>() {
                     @Override
                     public Bitmap call(String url) {
                         return downLoadUrl(url);
                     }
                 })
-                .map(new Func1<Bitmap, Bitmap>() {
-                    @Override
-                    public Bitmap call(Bitmap bitmap) {
-                        //
-                        return bitmap;
-                    }
-                })
+//                .compose(this.<Bitmap>schedulersTransformer())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(new Action0() {
                     @Override
@@ -98,13 +92,23 @@ public class Rxjava_Scheduler extends Activity implements View.OnClickListener {
                         image.setVisibility(View.VISIBLE);
                     }
                 })
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
-                        image.setImageBitmap(bitmap);
+
                     }
                 });
+    }
+
+    public <T> Observable.Transformer<T, T> schedulersTransformer() {
+        return new Observable.Transformer<T, T>() {
+
+            @Override
+            public Observable<T> call(Observable<T> rObservable) {
+                return rObservable.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
     }
 
     class DownLoadImage extends AsyncTask<Void, Void, Bitmap> {
