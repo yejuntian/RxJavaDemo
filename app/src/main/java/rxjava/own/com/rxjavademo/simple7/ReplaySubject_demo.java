@@ -70,7 +70,6 @@ public class ReplaySubject_demo extends Activity implements View.OnClickListener
                 });
                 break;
             case R.id.button2:
-                //需要自己手动发送（冷更新）
                 replaySubject.onNext(editText.getText().toString());
                 break;
         }

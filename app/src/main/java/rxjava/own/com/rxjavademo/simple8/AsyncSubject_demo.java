@@ -67,7 +67,6 @@ public class AsyncSubject_demo extends Activity implements View.OnClickListener 
                 });
                 break;
             case R.id.button2:
-                //需要自己手动发送（冷更新）
                 asyncSubject.onNext("hello");
                 asyncSubject.onNext("word");
                 asyncSubject.onNext("welcoming");

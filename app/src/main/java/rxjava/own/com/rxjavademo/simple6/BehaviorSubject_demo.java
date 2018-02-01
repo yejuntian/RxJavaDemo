@@ -60,7 +60,6 @@ public class BehaviorSubject_demo extends Activity implements View.OnClickListen
                 });
                 break;
             case R.id.button2:
-                //需要自己手动发送（冷更新）
                 behaviorSubject.onNext(editText.getText().toString());
                 break;
         }

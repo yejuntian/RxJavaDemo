@@ -43,7 +43,6 @@ public class PublishSubject_demo extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button1:
-                //需要自己手动发送（冷更新）
                 publishSubject.subscribe(new Observer<String>() {
                     @Override
                     public void onCompleted() {
