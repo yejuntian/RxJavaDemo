@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="rxjava.own.com.rxjavademo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,18 +10,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".simple2.RxJavaSimpleDemo2"/>
-        <activity android:name=".simple3.RxJavaSimpleDemo3"/>
-        <activity android:name=".simple4.RxJavaSimpleDemo4"/>
-        <activity android:name=".simple5.PublishSubject_demo"/>
-        <activity android:name=".simple6.BehaviorSubject_demo"/>
-        <activity android:name=".simple7.ReplaySubject_demo"/>
-        <activity android:name=".simple8.AsyncSubject_demo"/>
-        <activity android:name=".simple9.Rxjava_API"/>
-        <activity android:name=".simple9.Rxjava_FilterAPI"/>
-        <activity android:name=".simple9.Rxjava_Map"/>
-        <activity android:name=".simple9.Rxjava_Merge"/>
-        <activity android:name=".simple9.Rxjava_Scheduler">
+        <activity
+            android:name=".simple2.RxJavaSimpleDemo2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple3.RxJavaSimpleDemo3"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple4.RxJavaSimpleDemo4"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple5.PublishSubject_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple6.BehaviorSubject_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple7.ReplaySubject_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple8.AsyncSubject_demo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple9.Rxjava_API"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple9.Rxjava_FilterAPI"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple9.Rxjava_Map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple9.Rxjava_Merge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple9.Rxjava_Scheduler"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="rxjava.own.com.rxjavademo.simple10.NetworkPollingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".simple9.Rxjava_net"
+            android:screenOrientation="portrait">
             <!--<activity android:name=".MainActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
