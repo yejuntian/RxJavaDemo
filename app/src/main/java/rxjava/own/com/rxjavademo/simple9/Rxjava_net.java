@@ -10,13 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import rxjava.own.com.rxjavademo.R;
+import rxjava.own.com.rxjavademo.simple10.NetworkConditionPollingActivity;
 import rxjava.own.com.rxjavademo.simple10.NetworkPollingActivity;
 
 
 public class Rxjava_net extends Activity {
 
     private ListView listView;
-    private Class[] clazz = new Class[]{NetworkPollingActivity.class};
+    private Class[] clazz = new Class[]{NetworkPollingActivity.class,NetworkConditionPollingActivity.class};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
