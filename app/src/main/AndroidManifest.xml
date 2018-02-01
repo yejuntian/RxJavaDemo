@@ -59,8 +59,10 @@
         <activity
             android:name="rxjava.own.com.rxjavademo.simple10.interfaceRetryActivity"
             android:screenOrientation="portrait" />
+
+            <!--android:name=".simple10.Rxjava_net"-->
         <activity
-            android:name=".simple10.Rxjava_net"
+        android:name=".simple4.SubjectActivity"
             android:screenOrientation="portrait">
             <!--<activity android:name=".MainActivity">-->
             <intent-filter>
