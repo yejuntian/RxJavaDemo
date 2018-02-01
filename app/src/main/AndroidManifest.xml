@@ -57,6 +57,9 @@
             android:name="rxjava.own.com.rxjavademo.simple10.InterfaceNestingActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="rxjava.own.com.rxjavademo.simple10.SchedulersActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".simple10.Rxjava_net"
             android:screenOrientation="portrait">
             <!--<activity android:name=".MainActivity">-->

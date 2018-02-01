@@ -30,7 +30,7 @@ public class NetworkPollingActivity extends Activity {
         setContentView(R.layout.activity_network_polling);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://fy.iciba.com/ajax.php?a=fy&f=auto&t=auto&w=hi%20register") // 设置 网络请求 Url
+                .baseUrl("http://fy.iciba.com/") // 设置 网络请求 Url
                 .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 支持RxJava
                 .build();

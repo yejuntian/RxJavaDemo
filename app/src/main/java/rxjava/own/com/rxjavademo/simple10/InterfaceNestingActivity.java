@@ -27,7 +27,7 @@ public class InterfaceNestingActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_network_polling);
+        setContentView(R.layout.activity_inter_nest);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://fy.iciba.com/") // 设置 网络请求 Url
