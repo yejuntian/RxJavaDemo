@@ -29,7 +29,7 @@ public class NetworkConditionPollingActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_network_polling);
+        setContentView(R.layout.activity_network_condition_polling);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://fy.iciba.com/") // 设置 网络请求 Url
@@ -54,11 +54,13 @@ public class NetworkConditionPollingActivity extends Activity {
                     }
                 })
                 .flatMap(new Func1<Long, Observable<Translation>>() {
+
                     @Override
-                    public Observable<Translation> call(Long aLong) {
+                    public Observable<Translation> call(Long aVoid) {
                         return request.getCall();
                     }
                 })
+                .retryWhen(new RetryWithDelay(3,300))
                 .compose(this.<Translation>schedulersTransformer())
                 .subscribe(new Observer<Translation>() {
                     @Override

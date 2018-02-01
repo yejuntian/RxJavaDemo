@@ -39,6 +39,10 @@ public class InterfaceNestingActivity extends Activity {
 
     }
 
+    /**
+     * Observable.error(new Exception("访问异常"));
+     * @param view
+     */
     public void onClick(View view) {
         request.getRegisterCall()
                 .flatMap(new Func1<Translation, Observable<Translation>>() {
@@ -51,6 +55,7 @@ public class InterfaceNestingActivity extends Activity {
                         }
                     }
                 })
+                .retryWhen(new RetryWithDelay(8,300))
                 .compose(this.<Translation>schedulersTransformer())
                 .subscribe(new Observer<Translation>() {
                     @Override

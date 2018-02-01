@@ -56,7 +56,7 @@ public class NetworkPollingActivity extends Activity {
                         return request.getCall();
                     }
                 })
-                .compose(this.<Translation>schedulersTransformer())
+                .retryWhen(new RetryWithDelay(5,1000))
                 .subscribe(new Observer<Translation>() {
                     @Override
                     public void onCompleted() {

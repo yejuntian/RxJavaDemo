@@ -36,7 +36,6 @@ public class interfaceRetryActivity extends Activity {
 
     public void onClick(View view) {
         request.getRegisterCall()
-                .retryWhen(new RetryWithDelay(3,300))
                 .flatMap(new Func1<Translation, Observable<Translation>>() {
                     @Override
                     public Observable<Translation> call(Translation translation) {
@@ -47,6 +46,7 @@ public class interfaceRetryActivity extends Activity {
                         }
                     }
                 })
+                .retryWhen(new RetryWithDelay(3,300))
                 .compose(this.<Translation>schedulersTransformer())
                 .subscribe(new Observer<Translation>() {
                     @Override
