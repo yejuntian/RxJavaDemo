@@ -7,17 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
 import rx.Observer;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.functions.Func2;
-import rx.internal.util.ObserverSubscriber;
 import rx.schedulers.Schedulers;
 import rxjava.own.com.rxjavademo.R;
 
@@ -25,51 +22,44 @@ import rxjava.own.com.rxjavademo.R;
 public class Rxjava_Merge extends Activity implements View.OnClickListener {
 
     private Observable<String> observable;
-    private Button button;
+    private Button merge, mergeDelayError, mergeDelayErrorOk, zip;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merge);
-        button = findViewById(R.id.button1);
-        button.setOnClickListener(this);
+        merge = findViewById(R.id.merge);
+        mergeDelayError = findViewById(R.id.mergeDelayError);
+        mergeDelayErrorOk = findViewById(R.id.mergeDelayErrorOk);
+        zip = findViewById(R.id.zip);
+
+
+        merge.setOnClickListener(this);
+        mergeDelayError.setOnClickListener(this);
+        mergeDelayErrorOk.setOnClickListener(this);
+        zip.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button1:
-//                merge();
-//                mergeDelayError();
-//                mergeDelayErrorOk();
-//                zip();
-//                join();
-                toListTest();
+            case R.id.merge:
+                merge();
+                break;
+            case R.id.mergeDelayError:
+                mergeDelayError();
+                break;
+            case R.id.mergeDelayErrorOk:
+                mergeDelayErrorOk();
+                break;
+            case R.id.zip:
+                zip();
                 break;
         }
 
     }
 
-    /**
-     * 测试toList操作符
-     */
-    private void toListTest() {
-        String[] strs = new String[] {"jack", "ann", "one", "two", "three", "four"};
-        Observable.from(strs)
-                .toList()
-                .map(new Func1<List<String>, String>() {
-                    @Override
-                    public String call(List<String> strings) {
-                        return strings.get(0);
-                    }
-                }).subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String strings) {
-
-                    }
-                });
-    }
 
 
     /**
@@ -171,36 +161,4 @@ public class Rxjava_Merge extends Activity implements View.OnClickListener {
             }
         });
     }
-
-
-//    public void join() {
-//        String str1[] = new String[]{"1", "2", "3", "4"};
-//        Integer integer[] = new Integer[]{101, 102, 103};
-//
-//        Observable<String> observable1 = Observable.from(str1);
-//        Observable<Integer> observable2 = Observable.from(integer);
-//        observable2.join(observable1, new Func1<Integer, Observable<Integer>>() {
-//            @Override
-//            public Observable<Integer> call(Integer integer) {
-//                return Observable.just(integer);
-//            }
-//        }, new Func1<String, Observable<String>>() {
-//            @Override
-//            public Observable<String> call(String s) {
-//                return Observable.just(s);
-//            }
-//        }, new Func2<Integer, String, String>() {
-//            @Override
-//            public String call(Integer integer, String s) {
-//                return integer+"_"+s;
-//            }
-//        }).subscribe(new Action1<String>() {
-//
-//            @Override
-//            public void call(String o) {
-//                Log.e("test", "Object = " + o.toString());
-//            }
-//        });
-//
-//    }
 }

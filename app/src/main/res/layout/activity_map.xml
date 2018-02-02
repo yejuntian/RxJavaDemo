@@ -5,27 +5,21 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/merge"
+        android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="merge" />
+        android:text="map" />
 
     <Button
-        android:id="@+id/mergeDelayError"
+        android:id="@+id/flatMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="mergeDelayError错误的方式" />
+        android:text="flatMap" />
 
     <Button
-        android:id="@+id/mergeDelayErrorOk"
+        android:id="@+id/flatMapIterable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="mergeDelayError正确的方式" />
-
-    <Button
-        android:id="@+id/zip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="zip" />
+        android:text="flatMapIterable" />
 
 </LinearLayout>

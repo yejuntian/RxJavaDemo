@@ -27,29 +27,37 @@ import rxjava.own.com.rxjavademo.R;
 public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
 
     private Observable<String> observable;
-    private Button button;
+    private Button filter, take, takeLast, distinct1, first, elementAtOrDefault;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_api);
-        button = findViewById(R.id.button1);
-        button.setOnClickListener(this);
+        setContentView(R.layout.activity_filter);
+        filter = findViewById(R.id.filter);
+        take = findViewById(R.id.take);
+        takeLast = findViewById(R.id.takeLast);
+        distinct1 = findViewById(R.id.distinct1);
+        first = findViewById(R.id.first);
+        elementAtOrDefault = findViewById(R.id.elementAtOrDefault);
+
+
+        filter.setOnClickListener(this);
+        take.setOnClickListener(this);
+        takeLast.setOnClickListener(this);
+        distinct1.setOnClickListener(this);
+        first.setOnClickListener(this);
+        elementAtOrDefault.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button1:
+            case R.id.filter:
 //                subscribeType();
-//                filter();
-//                take();
-//                takeLast();
-                distinct1();
-//                distinct2();
+                filter();
+//                distinct1();
 //                first();
-//                first2();
 //                last();
 //                last2();
 //                skip();
@@ -58,6 +66,22 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
 //                elementAtOrDefault();
 //                sample();
                 break;
+            case R.id.take:
+                take();
+                break;
+            case R.id.takeLast:
+                takeLast();
+                break;
+            case R.id.distinct1:
+                distinct2();
+                break;
+            case R.id.first:
+                first2();
+                break;
+            case R.id.elementAtOrDefault:
+                elementAtOrDefault();
+                break;
+
         }
 
     }

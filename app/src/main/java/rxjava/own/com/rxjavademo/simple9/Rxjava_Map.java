@@ -21,24 +21,33 @@ import rxjava.own.com.rxjavademo.R;
 public class Rxjava_Map extends Activity implements View.OnClickListener {
 
     private Observable<String> observable;
-    private Button button;
+    private Button flatMap, map, flatMapIterable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_api);
-        button = findViewById(R.id.button1);
-        button.setOnClickListener(this);
+        setContentView(R.layout.activity_map);
+        map = findViewById(R.id.map);
+        flatMap = findViewById(R.id.flatMap);
+        flatMapIterable = findViewById(R.id.flatMapIterable);
+
+        map.setOnClickListener(this);
+        flatMap.setOnClickListener(this);
+        flatMapIterable.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button1:
-//                map();
-//                map1();
-//                flatMap();
+            case R.id.map:
+                map();
+                break;
+            case R.id.flatMap:
+                //map1();
+                flatMap();
+                break;
+            case R.id.flatMapIterable:
                 flatMapIterable();
                 break;
         }
@@ -133,7 +142,7 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
         });
     }
 
-    public void flatMapIterable(){
+    public void flatMapIterable() {
         List<Person> personList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             List<Order> orderList = new ArrayList<>();
@@ -145,7 +154,7 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
             person.setOrderList(orderList);
             personList.add(person);
         }
-        
+
         Observable.from(personList).flatMapIterable(new Func1<Person, Iterable<Order>>() {
             @Override
             public Iterable<Order> call(Person person) {
@@ -158,7 +167,6 @@ public class Rxjava_Map extends Activity implements View.OnClickListener {
             }
         });
     }
-
 
 
 }

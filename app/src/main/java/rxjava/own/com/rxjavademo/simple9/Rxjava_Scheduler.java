@@ -95,7 +95,7 @@ public class Rxjava_Scheduler extends Activity implements View.OnClickListener {
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
-
+                        image.setImageBitmap(bitmap);
                     }
                 });
     }
