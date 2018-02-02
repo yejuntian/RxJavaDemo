@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
@@ -23,19 +22,14 @@ import rxjava.own.com.rxjavademo.R;
 
 public class Rxjava_API extends Activity implements View.OnClickListener {
     private Button Button1;
-    private Button Button2;
-    private EditText editText;
     private Observable<String> observable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple2);
+        setContentView(R.layout.activity_api);
         Button1 = findViewById(R.id.button1);
-        Button2 = findViewById(R.id.button2);
-        editText = findViewById(R.id.edit_text);
         Button1.setOnClickListener(this);
-        Button2.setOnClickListener(this);
 
         observable = Observable.defer(new Func0<Observable<String>>() {
             @Override
@@ -67,15 +61,12 @@ public class Rxjava_API extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button1:
-
-                break;
-            case R.id.button2:
 //                repeat();
-                repeatWhen();
+//                repeatWhen();
 //                defer();
 //                range();
-//                interval();
-                timer();
+                interval();
+//                timer();
                 break;
         }
     }
@@ -152,13 +143,6 @@ public class Rxjava_API extends Activity implements View.OnClickListener {
      */
     public void interval() {
         Observable<Long> observable = Observable.interval(2,3, TimeUnit.SECONDS);
-        /*终止轮询
-        observable.compose(new Observable.Transformer<Long, Long>() {
-            @Override
-            public Observable<Long> call(Observable<Long> longObservable) {
-                return longObservable.takeUntil(Observable.timer(1000, TimeUnit.SECONDS));
-            }
-        });*/
         observable.subscribe(new Action1<Long>() {
             @Override
             public void call(Long aLong) {

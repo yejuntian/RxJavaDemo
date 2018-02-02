@@ -32,7 +32,7 @@ public class Rxjava_FilterAPI extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_api);
         button = findViewById(R.id.button1);
         button.setOnClickListener(this);
 
